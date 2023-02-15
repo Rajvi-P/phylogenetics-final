@@ -1,5 +1,5 @@
 Background:
-Rersinia pesetis is infamous for causing plague, such as the Bubonic plague and the Justinian plague, killing millions.
+Yersinia pestis is infamous for causing plague, such as the Bubonic plague and the Justinian plague, killing millions.
 Several whole genome sequnces of bacteria in the Yersinia pestis genus was collected from NCBI's Genbank.
 Sequences collected were comprised of strains isolated from various regions of the world, including the US, China, and Madagascar.
 
