@@ -101,15 +101,13 @@ Completed 2/14- data received in FASTA form
 
 Step 3: Alignment
 
-Complete due 12/21- using ClustalW
+Completed 12/21- using ClustalW
 
-clustalw2 -ALIGN -INFILE=pestis-all.md -OUTFILE=pestis-all-aligned.md -OUTPUT=FASTA
+    clustalw2 -ALIGN -INFILE=pestis-all.md -OUTFILE=pestis-all-aligned.md -OUTPUT=FASTA
 
 Description: ClustalW is a software used for multiple sequence alignment of nucleotides.
 
-             It is the most user friendly and performs quality alignments using progressive
-
-             alignment methods.
+It is the most user friendly and performs quality alignments using progressive alignment methods.
 
 Assumptions: all aligned sequences are evolutionarily related, rate of change in sequences is constant
 
