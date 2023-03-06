@@ -113,3 +113,20 @@ Assumptions: all aligned sequences are evolutionarily related, rate of change in
 
 Limitations: struggles to align distantly related sequences, takes very long to align big number of sequences
 
+
+
+Step 4: Distance-based tree and parsimony-based tree using the ape and phangorn R packages
+
+Description: The ape and phangorn R packages will create distance-based trees and parsimony-based trees.
+
+Parsimony-based methods will create a tree that minimizes the amount of evolutionary change required to explain the data.
+
+Distance-based methods will create a tree by calculating pairwise distances between molecular sequences. 
+
+Assumptions:  Parsimony methods assume independence among characters. Distance methods assume rate of molecular evolution is
+
+constant over time and across lineages.
+
+Limitations: Parsimony-based may not produce an accurate tree due to assuming the simplest explanation of evolutionary change is
+
+correct; trees may be inconsistent. Distance-based relies on an existing model and which model is chosen; there is no flexibility.
