@@ -1,0 +1,13 @@
+prefix=/Users/rajvipatel/miniconda3
+exec_prefix=/Users/rajvipatel/miniconda3
+libdir=/Users/rajvipatel/miniconda3/lib
+sharedlibdir=/Users/rajvipatel/miniconda3/lib
+includedir=/Users/rajvipatel/miniconda3/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.13
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}

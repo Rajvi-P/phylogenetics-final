@@ -1,0 +1,24 @@
+{
+  "build": "py310h1a28f6b_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "cffi >=1.11",
+    "python >=3.10,<3.11.0a0"
+  ],
+  "features": "",
+  "fn": "zstandard-0.18.0-py310h1a28f6b_0.conda",
+  "legacy_bz2_md5": "6a41659ec5eb3360142552994cd70827",
+  "legacy_bz2_size": 671201,
+  "license": "BSD-3-Clause",
+  "md5": "153b19a47dd86d39d91d64a7ad024573",
+  "name": "zstandard",
+  "sha256": "a4fda9eaacb4c6d9719d8aef0857258cf148869d29c5c1eecfea52b5bf1fa70d",
+  "size": 374876,
+  "subdir": "osx-arm64",
+  "timestamp": 1663827575446,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/zstandard-0.18.0-py310h1a28f6b_0.conda",
+  "version": "0.18.0"
+}

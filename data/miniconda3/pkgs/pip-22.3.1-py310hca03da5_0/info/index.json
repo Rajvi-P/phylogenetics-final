@@ -1,0 +1,17 @@
+{
+  "arch": "arm64",
+  "build": "py310hca03da5_0",
+  "build_number": 0,
+  "depends": [
+    "python >=3.10,<3.11.0a0",
+    "setuptools",
+    "wheel"
+  ],
+  "license": "MIT",
+  "license_family": "MIT",
+  "name": "pip",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1670597438586,
+  "version": "22.3.1"
+}

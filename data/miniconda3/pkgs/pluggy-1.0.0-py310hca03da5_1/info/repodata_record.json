@@ -1,0 +1,24 @@
+{
+  "build": "py310hca03da5_1",
+  "build_number": 1,
+  "channel": "https://repo.anaconda.com/pkgs/main/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "python >=3.10,<3.11.0a0"
+  ],
+  "features": "",
+  "fn": "pluggy-1.0.0-py310hca03da5_1.conda",
+  "legacy_bz2_md5": "7569b916b5f884c4423037e0ece14258",
+  "legacy_bz2_size": 26337,
+  "license": "MIT",
+  "license_family": "MIT",
+  "md5": "270707cabcf23c3ef23ad7c75318ad26",
+  "name": "pluggy",
+  "sha256": "0314edfd37c0f3f4a81f1a80f056c85305564c9366e8904e0fa7bc025586b8fc",
+  "size": 27136,
+  "subdir": "osx-arm64",
+  "timestamp": 1648109292954,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/pluggy-1.0.0-py310hca03da5_1.conda",
+  "version": "1.0.0"
+}

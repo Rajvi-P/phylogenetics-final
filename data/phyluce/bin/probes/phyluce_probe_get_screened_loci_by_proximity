@@ -1,0 +1,152 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+(c) 2021 Brant Faircloth || http://faircloth-lab.org/
+All rights reserved.
+
+This code is distributed under a 3-clause BSD license. Please see
+LICENSE.txt for more information.
+
+Created on 2021-02-18 T08:26:36-06:00
+"""
+
+import os
+import re
+import random
+import argparse
+from Bio import SeqIO
+
+from collections import defaultdict
+from phyluce.helpers import is_file, is_dir, FullPaths, CreateFile
+from phyluce.log import setup_logging
+
+from bx.intervals.cluster import ClusterTree
+
+# import pdb
+
+
+def get_args():
+    """Get arguments from CLI"""
+    parser = argparse.ArgumentParser(
+        description="""Given a FASTA file of properly formatted baits, keep only 1 locus (randomly) of those falling within a set distance"""
+    )
+    parser.add_argument(
+        "--input",
+        required=True,
+        type=is_file,
+        action=FullPaths,
+        help="""The FASTA file of bait sequences""",
+    )
+    parser.add_argument(
+        "--output",
+        required=True,
+        action=CreateFile,
+        help="""The output FASTA file of filtered sequences""",
+    )
+    parser.add_argument(
+        "--distance",
+        type=int,
+        default=10000,
+        help="""The minimum distance on which to filter""",
+    )
+    parser.add_argument(
+        "--regex",
+        type=str,
+        default="^uce-(\d+)(?:_p\d+.*)",
+        help="""A regular expression to apply to the probe sequences for replacement""",
+    )
+    parser.add_argument(
+        "--verbosity",
+        type=str,
+        choices=["INFO", "WARN", "CRITICAL"],
+        default="INFO",
+        help="""The logging level to use.""",
+    )
+    parser.add_argument(
+        "--log-path",
+        action=FullPaths,
+        type=is_dir,
+        default=None,
+        help="""The path to a directory to hold logs.""",
+    )
+    return parser.parse_args()
+
+
+def get_positions_from_coords(locus, s):
+    vals = {j[0]: j[1] for j in [i.split(":") for i in s.split(",")]}
+    return "{},{},{},{}".format(
+        locus,
+        vals["probes-global-chromo"],
+        vals["probes-global-start"],
+        vals["probes-global-end"],
+    )
+
+
+def main():
+    args = get_args()
+    # setup logging
+    log, my_name = setup_logging(args)
+    # build a cluster tree for the loci, allowing the user to set the clustering distance
+    # loci within args.distance
+    trees = defaultdict(lambda: ClusterTree(args.distance, 2))
+    # fill cluster tree with data.  name_int converts the int part of the locus name to an int
+    positions = set()
+    loci = set()
+    starting_baits = 0
+    with open(args.input, "rU") as infile:
+        for record in SeqIO.parse(infile, "fasta"):
+            locus = int(re.search(args.regex, record.id).groups()[0])
+            positions.add(
+                get_positions_from_coords(
+                    locus, record.description.split("|")[1]
+                )
+            )
+            starting_baits += 1
+    log.warn(
+        "Start with {} loci and {} baits".format(
+            len(positions), starting_baits
+        )
+    )
+    for pos in positions:
+        locus, chromo, start, end = pos.split(",")
+        trees[chromo].insert(int(start), int(end), int(locus))
+    bad = []
+    # for each cluster, get the member names
+    for chromo, cluster in list(trees.items()):
+        clustered = cluster.getregions()
+        if clustered != []:
+            # if there are a cluster of loci, randomly choose one - ignore the rest
+            for cluster in clustered:
+                loci = list(set(cluster[-1]))
+                if len(loci) > 1:
+                    choice = random.choice(loci)
+                    loci.remove(choice)
+                    bad.extend(loci)
+    bad = set(bad)
+    log.warn(
+        "Removing {} loci that appear to be within {} bp of one another".format(
+            len(bad), args.distance
+        )
+    )
+    kept_baits = 0
+    kept_loci = set()
+    with open(args.input, "rU") as infile:
+        with open(args.output, "w") as outf:
+            for record in SeqIO.parse(infile, "fasta"):
+                locus = int(re.search(args.regex, record.id).groups()[0])
+                if locus not in bad:
+                    outf.write(record.format("fasta"))
+                    kept_baits += 1
+                    kept_loci.add(locus)
+                else:
+                    pass
+    log.warn(
+        "Ends with {} loci and {} baits".format(len(kept_loci), kept_baits)
+    )
+    # end
+    text = " Completed {} ".format(my_name)
+    log.info(text.center(65, "="))
+
+
+if __name__ == "__main__":
+    main()

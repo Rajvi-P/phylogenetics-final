@@ -1,0 +1,178 @@
+#!/usr/bin/env python
+# encoding: utf-8
+
+"""
+get_align_summary_data.py
+
+Created by Brant Faircloth on 16 August 2011.
+Copyright 2011 Brant C. Faircloth. All rights reserved.
+
+The program iterates through a folder of nexus files and returns the count
+of alignments having more than "--percent" of "--taxa" taxa.
+"""
+
+
+# import os
+# import math
+# import numpy
+import argparse
+import multiprocessing
+
+# from Bio import AlignIO
+# from collections import Counter
+
+from phyluce import summary
+from phyluce.helpers import is_dir, FullPaths, get_alignment_files
+from phyluce.log import setup_logging
+
+import pdb
+
+
+def get_args():
+    parser = argparse.ArgumentParser(
+        description="""Compute summary statistics for alignments in parallel""",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--alignments",
+        required=True,
+        type=is_dir,
+        action=FullPaths,
+        help="""The directory containing alignments to be summarized.""",
+    )
+    parser.add_argument(
+        "--input-format",
+        dest="input_format",
+        choices=[
+            "fasta",
+            "nexus",
+            "phylip",
+            "phylip-relaxed",
+            "clustal",
+            "emboss",
+            "stockholm",
+        ],
+        default="nexus",
+        help="""The input alignment format.""",
+    )
+    parser.add_argument(
+        "--show-taxon-counts",
+        action="store_true",
+        default=False,
+        help="""Show the count of loci with X taxa.""",
+    )
+    parser.add_argument(
+        "--verbosity",
+        type=str,
+        choices=["INFO", "WARN", "CRITICAL"],
+        default="INFO",
+        help="""The logging level to use.""",
+    )
+    parser.add_argument(
+        "--log-path",
+        action=FullPaths,
+        type=is_dir,
+        default=None,
+        help="""The path to a directory to hold logs.""",
+    )
+    parser.add_argument(
+        "--cores",
+        type=int,
+        default=1,
+        help="""Process alignments in parallel using --cores for alignment. """
+        + """This is the number of PHYSICAL CPUs.""",
+    )
+    parser.add_argument(
+        "--output-stats",
+        dest="output",
+        default=None,
+        help="""Output a CSV-formatted file of stats, by locus""",
+    )
+    return parser.parse_args()
+
+
+def write_summary_info(log, summary_data, output):
+    text = " Output Stats "
+    log.info(text.center(65, "-"))
+    log.info("Writing locus info to {}".format(output))
+    with open(output, "w") as outfile:
+        outfile.write(
+            "aln,length,sites,differences,characters,gc content,gaps,a count, c count, g count, t count\n"
+        )
+        for aln in summary_data:
+            outfile.write(
+                "{},{},{},{},{},{},{},{},{},{},{}\n".format(
+                    aln.name,
+                    aln.length,
+                    aln.sum_informative_sites,
+                    aln.sum_differences,
+                    aln.sum_counted_sites,
+                    round(
+                        float(sum([aln.characters["G"], aln.characters["C"]]))
+                        / sum(
+                            [
+                                count
+                                for char, count in aln.characters.items()
+                                if char != "-"
+                            ]
+                        )
+                        * 100,
+                        2,
+                    ),
+                    aln.characters["-"],
+                    aln.characters["A"],
+                    aln.characters["C"],
+                    aln.characters["G"],
+                    aln.characters["T"],
+                )
+            )
+
+
+def main():
+    args = get_args()
+    # setup logging
+    log, my_name = setup_logging(args)
+    # find all alignments
+    files = get_alignment_files(log, args.alignments, args.input_format)
+    work = [[file, args.input_format] for file in files]
+    log.info("Computing summary statistics using {} cores".format(args.cores))
+    if args.cores > 1:
+        assert (
+            args.cores <= multiprocessing.cpu_count()
+        ), "You've specified more cores than you have"
+        pool = multiprocessing.Pool(args.cores)
+        summary_data = pool.map(summary.get_stats, work)
+    else:
+        summary_data = list(map(summary.get_stats, work))
+    # alignments
+    a_vars = summary.get_lengths(summary_data)
+    summary.log_length_summary(log, len(summary_data), a_vars)
+    # sites
+    s_vars = summary.get_sites(summary_data)
+    summary.log_sites_summary(log, len(summary_data), s_vars)
+    # taxa
+    t_vars = summary.get_taxa(summary_data)
+    summary.log_taxa_summary(log, t_vars)
+    # missing
+    m_vars = summary.get_percent_missing(summary_data)
+    summary.log_missing_summary(log, m_vars)
+    # characters
+    all_bases, sum_characters = summary.total_characters(summary_data)
+    sum_nucleotides = summary.total_nucleotides(summary_data)
+    summary.log_char_summary(log, sum_characters, sum_nucleotides)
+    # matrix
+    percentages = summary.get_matrix_percentages(t_vars[0])
+    summary.log_matrix_summary(log, percentages)
+    # taxa dist.
+    summary.log_taxa_dist(log, args.show_taxon_counts, t_vars[0])
+    # character dist
+    summary.log_character_dist(log, all_bases)
+    # end
+    if args.output:
+        write_summary_info(log, summary_data, args.output)
+    text = " Completed {} ".format(my_name)
+    log.info(text.center(65, "="))
+
+
+if __name__ == "__main__":
+    main()

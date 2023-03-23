@@ -1,0 +1,24 @@
+{
+  "build": "py310hca03da5_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "python >=3.10,<3.11.0a0"
+  ],
+  "features": "",
+  "fn": "tqdm-4.64.1-py310hca03da5_0.conda",
+  "legacy_bz2_md5": "9ba49ac078aa8a16a56036f8eecd7bce",
+  "legacy_bz2_size": 126964,
+  "license": "MPL-2.0 AND MIT",
+  "license_family": "MOZILLA",
+  "md5": "ac6490ba091b3ac873e369b1d655b9ca",
+  "name": "tqdm",
+  "sha256": "b98a27a0108a4106d6897101daa9c7677fa57718fc7733fdbc3db8323edb8d47",
+  "size": 131120,
+  "subdir": "osx-arm64",
+  "timestamp": 1664392723624,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/tqdm-4.64.1-py310hca03da5_0.conda",
+  "version": "4.64.1"
+}

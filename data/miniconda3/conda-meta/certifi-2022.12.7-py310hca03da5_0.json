@@ -1,0 +1,53 @@
+{
+  "build": "py310hca03da5_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "python >=3.10,<3.11.0a0"
+  ],
+  "extracted_package_dir": "/Users/rajvipatel/miniconda3/pkgs/certifi-2022.12.7-py310hca03da5_0",
+  "features": "",
+  "files": [
+    "lib/python3.10/site-packages/certifi-2022.12.7.dist-info/INSTALLER",
+    "lib/python3.10/site-packages/certifi-2022.12.7.dist-info/LICENSE",
+    "lib/python3.10/site-packages/certifi-2022.12.7.dist-info/METADATA",
+    "lib/python3.10/site-packages/certifi-2022.12.7.dist-info/RECORD",
+    "lib/python3.10/site-packages/certifi-2022.12.7.dist-info/REQUESTED",
+    "lib/python3.10/site-packages/certifi-2022.12.7.dist-info/WHEEL",
+    "lib/python3.10/site-packages/certifi-2022.12.7.dist-info/direct_url.json",
+    "lib/python3.10/site-packages/certifi-2022.12.7.dist-info/top_level.txt",
+    "lib/python3.10/site-packages/certifi/__init__.py",
+    "lib/python3.10/site-packages/certifi/__main__.py",
+    "lib/python3.10/site-packages/certifi/__pycache__/__init__.cpython-310.pyc",
+    "lib/python3.10/site-packages/certifi/__pycache__/__main__.cpython-310.pyc",
+    "lib/python3.10/site-packages/certifi/__pycache__/core.cpython-310.pyc",
+    "lib/python3.10/site-packages/certifi/cacert.pem",
+    "lib/python3.10/site-packages/certifi/core.py",
+    "lib/python3.10/site-packages/certifi/py.typed"
+  ],
+  "fn": "certifi-2022.12.7-py310hca03da5_0.conda",
+  "legacy_bz2_md5": "c422dc257946630dc350908b1ee6daf5",
+  "legacy_bz2_size": 156639,
+  "license": "MPL-2.0",
+  "license_family": "Other",
+  "link": {
+    "source": "/Users/rajvipatel/miniconda3/pkgs/certifi-2022.12.7-py310hca03da5_0",
+    "type": 1
+  },
+  "md5": "ca249131475de84e4f57c503611f38ac",
+  "name": "certifi",
+  "package_tarball_full_path": "/Users/rajvipatel/miniconda3/pkgs/certifi-2022.12.7-py310hca03da5_0.conda",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "requested_spec": "defaults/osx-arm64::certifi==2022.12.7=py310hca03da5_0[md5=ca249131475de84e4f57c503611f38ac]",
+  "sha256": "91783525c3318af06c632e6ef2efb686eaea6902c0071ed9edec0fb71eed9722",
+  "size": 154393,
+  "subdir": "osx-arm64",
+  "timestamp": 1671487845526,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/certifi-2022.12.7-py310hca03da5_0.conda",
+  "version": "2022.12.7"
+}
