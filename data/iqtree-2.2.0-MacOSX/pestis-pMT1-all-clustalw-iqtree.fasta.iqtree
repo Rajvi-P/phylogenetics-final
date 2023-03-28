@@ -1,0 +1,173 @@
+IQ-TREE 2.2.0 COVID-edition built Jun  1 2022
+
+Input file name: pestis-pMT1-all-clustalw-iqtree.fasta
+Type of analysis: ModelFinder + tree reconstruction
+Random seed number: 366394
+
+REFERENCES
+----------
+
+To cite IQ-TREE please use:
+
+Bui Quang Minh, Heiko A. Schmidt, Olga Chernomor, Dominik Schrempf,
+Michael D. Woodhams, Arndt von Haeseler, and Robert Lanfear (2020)
+IQ-TREE 2: New models and efficient methods for phylogenetic inference
+in the genomic era. Mol. Biol. Evol., in press.
+https://doi.org/10.1093/molbev/msaa015
+
+To cite ModelFinder please use: 
+
+Subha Kalyaanamoorthy, Bui Quang Minh, Thomas KF Wong, Arndt von Haeseler,
+and Lars S Jermiin (2017) ModelFinder: Fast model selection for
+accurate phylogenetic estimates. Nature Methods, 14:587–589.
+https://doi.org/10.1038/nmeth.4285
+
+SEQUENCE ALIGNMENT
+------------------
+
+Input data: 13 sequences with 210104 nucleotide sites
+Number of constant sites: 96290 (= 45.8297% of all sites)
+Number of invariant (constant or ambiguous constant) sites: 96290 (= 45.8297% of all sites)
+Number of parsimony informative sites: 54162
+Number of distinct site patterns: 4025
+
+ModelFinder
+-----------
+
+Best-fit model according to BIC: K2P+I+I+R4
+
+List of models sorted by BIC scores: 
+
+Model                  LogL         AIC      w-AIC        AICc     w-AICc         BIC      w-BIC
+K2P+I+I+R4      -699507.975 1399077.950 -   0.0017 1399077.960 -   0.0017 1399395.866 +    0.696
+TNe+I+I+R4      -699502.814 1399069.629 +    0.109 1399069.639 +    0.109 1399397.800 +    0.265
+TPM3+I+I+R4     -699505.447 1399074.895 -  0.00782 1399074.905 -  0.00783 1399403.066 -    0.019
+TPM2+I+I+R4     -699506.340 1399076.679 -  0.00321 1399076.689 -  0.00321 1399404.851 -   0.0078
+TIM3e+I+I+R4    -699500.310 1399066.621 +     0.49 1399066.631 +     0.49 1399405.047 -  0.00707
+TIM2e+I+I+R4    -699501.140 1399068.279 +    0.214 1399068.290 +    0.214 1399406.706 -  0.00308
+K3P+I+I+R4      -699507.979 1399079.958 - 0.000622 1399079.968 - 0.000622 1399408.129 -  0.00151
+TIMe+I+I+R4     -699502.817 1399071.635 -   0.0399 1399071.645 -   0.0399 1399410.062 - 0.000576
+TVMe+I+I+R4     -699504.731 1399077.462 -  0.00217 1399077.473 -  0.00217 1399426.144 - 1.85e-07
+SYM+I+I+R4      -699499.621 1399069.241 +    0.132 1399069.253 +    0.132 1399428.179 -  6.7e-08
+TN+F+I+I+R4     -699544.802 1399159.605 - 3.15e-21 1399159.617 - 3.15e-21 1399518.542 -  1.6e-27
+TIM2+F+I+I+R4   -699538.814 1399149.627 - 4.63e-19 1399149.640 - 4.62e-19 1399518.820 - 1.39e-27
+TIM3+F+I+I+R4   -699540.971 1399153.942 - 5.35e-20 1399153.954 - 5.35e-20 1399523.135 - 1.61e-28
+TIM+F+I+I+R4    -699544.769 1399161.538 -  1.2e-21 1399161.550 -  1.2e-21 1399530.731 - 3.61e-30
+GTR+F+I+I+R4    -699536.085 1399148.170 - 9.59e-19 1399148.184 - 9.57e-19 1399537.874 - 1.01e-31
+HKY+F+I+I+R4    -699565.984 1399199.968 - 5.42e-30 1399199.980 - 5.42e-30 1399548.651 - 4.64e-34
+TPM2u+F+I+I+R4  -699559.949 1399189.898 - 8.33e-28 1399189.910 - 8.32e-28 1399548.836 - 4.23e-34
+TPM3u+F+I+I+R4  -699562.159 1399194.317 - 9.14e-29 1399194.329 - 9.14e-29 1399553.255 - 4.64e-35
+K3Pu+F+I+I+R4   -699565.986 1399201.972 - 1.99e-30 1399201.984 - 1.99e-30 1399560.910 - 1.01e-36
+TVM+F+I+I+R4    -699556.940 1399187.881 - 2.28e-27 1399187.894 - 2.28e-27 1399567.329 - 4.07e-38
+GTR+F+R6        -699534.243 1399150.485 - 3.01e-19 1399150.501 - 3.01e-19 1399570.955 - 6.65e-39
+GTR+F+R7        -699526.084 1399138.168 - 1.42e-16 1399138.186 - 1.42e-16 1399579.149 - 1.11e-40
+GTR+F+I+I+R5    -699600.143 1399280.286 - 1.96e-47 1399280.301 - 1.96e-47 1399690.500 - 7.31e-65
+GTR+F+I+I+R3    -699718.514 1399509.027 - 4.19e-97 1399509.040 - 4.19e-97 1399878.220 - 1.26e-105
+GTR+F+R5        -699739.771 1399557.543 - 1.22e-107 1399557.557 - 1.22e-107 1399957.502 - 7.68e-123
+GTR+F+I+I+R2    -699867.057 1399802.114 - 9.54e-161 1399802.126 - 9.54e-161 1400150.796 - 8.16e-165
+GTR+F+R4        -700076.923 1400227.846 - 3.41e-253 1400227.860 - 3.41e-253 1400607.295 - 6.09e-264
+GTR+F+R3        -700136.433 1400342.865 - 3.61e-278 1400342.877 - 3.6e-278 1400701.803 - 1.83e-284
+GTR+F+R2        -700425.079 1400916.158 -        0 1400916.169 -        0 1401254.585 -        0
+JC+I+I+R4       -700977.360 1402014.721 -        0 1402014.730 -        0 1402322.382 -        0
+F81+F+I+I+R4    -701031.440 1402128.880 -        0 1402128.890 -        0 1402467.307 -        0
+GTR+F+G4        -703893.478 1407850.957 -        0 1407850.967 -        0 1408179.128 -        0
+GTR+F+I+G4      -703893.919 1407853.838 -        0 1407853.849 -        0 1408192.265 -        0
+GTR+F+I         -709119.826 1418303.652 -        0 1418303.662 -        0 1418631.823 -        0
+GTR+F           -709657.532 1419377.065 -        0 1419377.074 -        0 1419694.981 -        0
+
+AIC, w-AIC   : Akaike information criterion scores and weights.
+AICc, w-AICc : Corrected AIC scores and weights.
+BIC, w-BIC   : Bayesian information criterion scores and weights.
+
+Plus signs denote the 95% confidence sets.
+Minus signs denote significant exclusion.
+
+SUBSTITUTION PROCESS
+--------------------
+
+Model of substitution: K2P+I+I+R4
+
+Rate parameter R:
+
+  A-C: 1.0000
+  A-G: 1.7993
+  A-T: 1.0000
+  C-G: 1.0000
+  C-T: 1.7993
+  G-T: 1.0000
+
+State frequencies: (equal frequencies)
+
+Rate matrix Q:
+
+  A        -1    0.2632    0.4736    0.2632
+  C    0.2632        -1    0.2632    0.4736
+  G    0.4736    0.2632        -1    0.2632
+  T    0.2632    0.4736    0.2632        -1
+
+Model of rate heterogeneity: Invar+Invar+FreeRate with 4 categories
+Proportion of invariable sites: 0.0001017
+Site proportion and rates:  (0.2733,0.1338) (0.2199,0.144) (0.2945,0.1512) (0.2121,4.182)
+
+ Category  Relative_rate  Proportion
+  0         0              0.0001017
+  1         0.1338         0.2733
+  2         0.144          0.2199
+  3         0.1512         0.2945
+  4         4.182          0.2121
+
+MAXIMUM LIKELIHOOD TREE
+-----------------------
+
+Log-likelihood of the tree: -696313.3878 (s.e. 807.2872)
+Unconstrained log-likelihood (without tree): -1228601.1745
+Number of free parameters (#branches + #model parameters): 31
+Akaike information criterion (AIC) score: 1392688.7757
+Corrected Akaike information criterion (AICc) score: 1392688.7851
+Bayesian information criterion (BIC) score: 1393006.6918
+
+Total tree length (sum of branch lengths): 8.5127
+Sum of internal branch lengths: 8.4922 (99.7590% of tree length)
+
+WARNING: 2 near-zero internal branches (<0.0000) should be treated with caution
+         Such branches are denoted by '**' in the figure below
+
+NOTE: Tree is UNROOTED although outgroup taxon 'AE017045.1' is drawn at root
+
++--AE017045.1
+|
++--NC_017266.1
+|
+|            +--NC_003134.1
+|  +---------|
+|  |         +--CP045159.1
++--|
+   |           +--CP000309.1
+   |        +**|
+   |        |  +**NC_014022.1
+   |     +--|
+   |     |  |  +--CP000306.1
+   |     |  +--|
+   |     |     +--NC_017155.1
+   |  +--|
+   |  |  |                                                         +**NZ_CP016275.1
+   |  |  |                                                      +**|
+   |  |  |                                                      |  +**NC_009596.1
+   |  |  +------------------------------------------------------|
+   |  |                                                         +--NZ_CP045637.1
+   +--|
+      |  +--CP010248.1
+      +--|
+         +--CP009714.1
+
+Tree in newick format:
+
+(AE017045.1:0.0001455522,NC_017266.1:0.0001285836,((NC_003134.1:0.0004306706,CP045159.1:0.0005178607):1.2540162105,((((CP000309.1:0.0000669995,NC_014022.1:0.0000004755):0.0000011916,(CP000306.1:0.0000835912,NC_017155.1:0.0000936783):0.0000127324):0.0312896492,((NZ_CP016275.1:0.0000004755,NC_009596.1:0.0000004755):0.0000011648,NZ_CP045637.1:0.0189835632):6.4247044862):0.2307986883,(CP010248.1:0.0000202861,CP009714.1:0.0000455112):0.2998398024):0.2222302511):0.0292948619);
+
+TIME STAMP
+----------
+
+Date and time: Thu Mar 23 15:36:34 2023
+Total CPU time used: 38.678106 seconds (0h:0m:38s)
+Total wall-clock time used: 38.66424 seconds (0h:0m:38s)
+

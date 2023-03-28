@@ -1,0 +1,14 @@
+IQ-TREE multicore version 2.2.0 COVID-edition for Mac OS X 64-bit built Jun  1 2022
+Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
+Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams, Ly Trong Nhan.
+
+Host:    Rajvis-MacBook-Air.local (SSE4.2, 8 GB RAM)
+Command: bin/iqtree2 -s pestis-pMT1-all-mafft-raxml.fasta
+Seed:    180666 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Thu Mar 23 15:33:03 2023
+Kernel:  SSE2 - 1 threads (8 CPU cores detected)
+
+HINT: Use -nt option to specify number of threads because your CPU has 8 cores!
+HINT: -nt AUTO will automatically determine the best number of threads to use.
+
+Reading alignment file pestis-pMT1-all-mafft-raxml.fasta ... ERROR: File not found pestis-pMT1-all-mafft-raxml.fasta

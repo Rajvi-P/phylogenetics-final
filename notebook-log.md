@@ -168,9 +168,11 @@ plot(tre.ini)
 
 nodelabels()
 
-root(tre.ini,outgroup="CP000309.1 Yersinia pestis Antiqua plasmid pMT, complete sequence")
+for mafft: tre2 = tre2 <- root(tre.ini, outgroup = "CP000309.1 Yersinia pestis Antiqua plasmid pMT, complete sequence")
+for clustalw: tre2 = root(tre,outgroup="CP000309.1")
 
-plot(tre.pars, cex=0.6)
+plot(tre2, cex = 0.6)
+
 title("pMT alignment parsimony-based tree")
 
 
@@ -205,7 +207,8 @@ plot(tre.ini)
 
 nodelabels()
 
-root(tre.ini,outgroup="CP000309.1 Yersinia pestis Antiqua plasmid pMT, complete sequence")
+for mafft: tre2 = root(tre.ini,outgroup="CP000309.1 Yersinia pestis Antiqua plasmid pMT, complete sequence")
+for clustalw: tre2 = root(tre,outgroup="CP000309.1")
 
 tre <- ladderize(tre)
 
@@ -217,18 +220,62 @@ Step 5: Maximum Likelihood Inference Method Per each Parsimony and Distance Tree
 
 Incomplete- using RAxML-NG 
 
-Description: 
+Description: RAxML-NG is a maximum likelihood tool that infers phylogenetic trees using any of the following input
 
-Assumptions:
+seequence options: nucleotides, amino acids, binary/multi-state morphological data, RNA secondary structure.
 
-Limitations:
+Assumptions: Mutation process is the same at every branch of the tree. All sites evolve independently of each other. 
+
+All sites evolve the same.
+
+Limitations: Has higher variance of trees
 
 Code:
 
-Incomplete- using IQ-Tree
+Example:
 
-Description: 
+./raxml-ng --check --msa ng-tutorial/bad.fa --model GTR+G
+./raxml-ng --check --msa ng-tutorial/bad.fa.raxml.reduced.phy --model GTR+G
+./raxml-ng --parse --msa ng-tutorial/prim.phy --model GTR+G
+./raxml-ng --msa ng-tutorial/prim.phy --model GTR+G --prefix T3 --threads 2 --seed 2
 
-Assumptions:
+using mafft file: 
 
-Limitations:
+Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --check --msa pestis-pMT1-all-mafft-raxml.fasta --model GTR+G
+
+Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --check --msa pestis-pMT1-all-mafft-raxml.fasta.raxml.reduced.phy --model GTR+G
+
+Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --parse --msa pestis-pMT1-all-mafft-raxml.fasta.raxml.reduced.phy --model GTR+G
+
+Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --msa pestis-pMT1-all-mafft-raxml.fasta.raxml.reduced.phy --model GTR+G --prefix T5 --threads 2 --seed 2
+
+using clustalw file: 
+
+Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --check --msa pestis-pMT1-all-clustalw-raxml.fasta --model GTR+G
+
+Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --check --msa pestis-pMT1-all-clustalw-raxml.fasta --model GTR+G
+
+Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --parse --msa pestis-pMT1-all-clustalw-raxml.fasta --model GTR+G
+
+Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --msa pestis-pMT1-all-clustalw-raxml.fasta --model GTR+G --prefix T6 --threads 2 --seed 2
+
+
+Incomplete- using IQ-Tree 2
+
+Description: IQ-Tree 2 is a program that creates maximum likelihood phylogenies. The three main steps include using a 
+
+fast model selection via ModelFinder, an effective tree search algorithm, and an ultrafast bootstrap approximation.
+
+Assumptions: samples local optima so top optima is the ideal tree, 
+
+Limitations: longer running time, 100 maximum perturbations, no guarantee that output phylogeny represents global optimum
+
+code:
+
+using mafft file:
+
+Rajvis-MacBook-Air:iqtree-2.2.0-MacOSX rajvipatel$ bin/iqtree2 -s pestis-pMT1-all-mafft-iqtree.fasta
+
+using clustalw file:
+
+Rajvis-MacBook-Air:iqtree-2.2.0-MacOSX rajvipatel$ bin/iqtree2 -s pestis-pMT1-all-clustalw-iqtree.fasta
