@@ -128,8 +128,23 @@ Limitations: has no function to exclude divergent input sequences (https://www.n
 Code:     mafft pestis-pMT1-all.fasta > pestis-pMT1-all-mafft.fasta
 
 
+Step 4: TrimAl
 
-Step 4: Distance-based tree and parsimony-based tree using the ape and phangorn R packages
+Description: 
+
+Assumptions:
+
+Limitations:
+
+
+Code:
+
+trimal -in pestis-pMT1-all-mafft.fasta -out pestis-pMT1-all-mafft-trimal.fasta
+
+trimal -in pestis-pMT1-all-clustalw.fasta -out pestis-pMT1-all-clustalw-trimal.fasta
+
+
+Step 5: Distance-based tree and parsimony-based tree using the ape and phangorn R packages
 
 Completed- Parsimony Tree per each Clustalw and Mafft Alignment with selecting NZ_LBFJ01000024.1 as root.
 
@@ -147,14 +162,15 @@ Note: root all trees using root(tre.ini,outgroup=“name of clade plasmids”) o
 
 Code:
 
+Mafft-aligned parsimony tree:
+
 library(ape)
 
 library(adegenet)
 
 library(phangorn)
 
-dna <- fasta2DNAbin(file="/Users/rajvipatel/phylogenetics-final/data/pestis-pMT1-all-mafft.fasta")
-or dna <- fasta2DNAbin(file="/Users/rajvipatel/phylogenetics-final/data/pestis-pMT1-all-clustalw.fasta")
+dna <- fasta2DNAbin(file="/Users/rajvipatel/phylogenetics-final/data/pestis-pMT1-all-mafft-trimal.fasta")
 
 dna2 <- as.phyDat(dna)
 
@@ -168,12 +184,42 @@ plot(tre.ini)
 
 nodelabels()
 
-for mafft: tre2 = tre2 <- root(tre.ini, outgroup = "CP000309.1 Yersinia pestis Antiqua plasmid pMT, complete sequence")
-for clustalw: tre2 = root(tre,outgroup="CP000309.1")
+tre2 = tre2 <- root(tre.ini, outgroup = "CP000309.1 263294 bp")
 
 plot(tre2, cex = 0.6)
 
-title("pMT alignment parsimony-based tree")
+title("pMT mafft-aligned parsimony-based tree")
+
+
+Clustalw-aligned parsimony tree:
+
+library(ape)
+
+library(adegenet)
+
+library(phangorn)
+
+dna <- fasta2DNAbin(file="/Users/rajvipatel/phylogenetics-final/data/pestis-pMT1-all-clustalw-trimal.fasta")
+
+dna2 <- as.phyDat(dna)
+
+tre.ini <- nj(dist.dna(dna,model="raw"))
+
+parsimony(tre.ini, dna2)
+
+tre.pars <- optim.parsimony(tre.ini, dna2)
+
+plot(tre.ini)
+
+nodelabels()
+
+tre2 = root(tre.ini,outgroup="CP000309.1 210104 bp")
+
+plot(tre2, cex = 0.6)
+
+title("pMT clustalw-aligned parsimony-based tree")
+
+
 
 
 Completed- Distance Tree per each Clustalw and Mafft Alignment with selecting NZ_LBFJ01000024.1 as root.
@@ -190,33 +236,59 @@ Note: root all trees using root(tre.ini,outgroup=“name of clade plasmids”) o
 
 Code:
 
+Mafft-aligned distance tree:
+
 library(ape)
 
 library(adegenet)
 
 library(phangorn)
 
-dna <- fasta2DNAbin(file="/Users/rajvipatel/phylogenetics-final/data/pestis-pMT1-all-mafft.fasta")
-or dna <- fasta2DNAbin(file="/Users/rajvipatel/phylogenetics-final/data/pestis-pMT1-all-clustalw.fasta")
+dna <- fasta2DNAbin(file="/Users/rajvipatel/phylogenetics-final/data/pestis-pMT1-all-mafft-trimal.fasta")
 
 D <- dist.dna(dna, model="TN93")
 
 tre <- nj(D)
 
-plot(tre.ini)
+plot(tre)
 
 nodelabels()
 
-for mafft: tre2 = root(tre.ini,outgroup="CP000309.1 Yersinia pestis Antiqua plasmid pMT, complete sequence")
-for clustalw: tre2 = root(tre,outgroup="CP000309.1")
+tre2 = root(tre,outgroup="CP000309.1 263294 bp")
 
 tre <- ladderize(tre)
 
 plot(tre, cex=.6)
-title("pMT alignment distance-based tree")
+title("pMT mafft-aligned distance-based tree")
 
 
-Step 5: Maximum Likelihood Inference Method Per each Parsimony and Distance Tree
+Clustalw-aligned distance tree:
+
+library(ape)
+
+library(adegenet)
+
+library(phangorn)
+
+dna <- fasta2DNAbin(file="/Users/rajvipatel/phylogenetics-final/data/pestis-pMT1-all-clustalw-trimal.fasta")
+
+D <- dist.dna(dna, model="TN93")
+
+tre <- nj(D)
+
+plot(tre)
+
+nodelabels()
+
+tre2 = root(tre,outgroup="CP000309.1 210104 bp")
+
+tre <- ladderize(tre)
+
+plot(tre, cex=.6)
+title("pMT clustalw-aligned distance-based tree")
+
+
+Step 6: Maximum Likelihood Inference Method Per each Parsimony and Distance Tree
 
 Incomplete- using RAxML-NG 
 
@@ -250,8 +322,6 @@ Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --parse --msa pes
 Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --msa pestis-pMT1-all-mafft-raxml.fasta.raxml.reduced.phy --model GTR+G --prefix T5 --threads 2 --seed 2
 
 using clustalw file: 
-
-Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --check --msa pestis-pMT1-all-clustalw-raxml.fasta --model GTR+G
 
 Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --check --msa pestis-pMT1-all-clustalw-raxml.fasta --model GTR+G
 

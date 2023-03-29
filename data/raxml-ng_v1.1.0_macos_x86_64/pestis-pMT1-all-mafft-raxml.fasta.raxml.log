@@ -7,14 +7,14 @@ Questions/problems/suggestions? Please visit: https://groups.google.com/forum/#!
 
 System: Apple M1, 8 cores, 8 GB RAM
 
-RAxML-NG was called at 23-Mar-2023 15:13:18 as follows:
+RAxML-NG was called at 28-Mar-2023 14:21:46 as follows:
 
 ./raxml-ng --check --msa pestis-pMT1-all-mafft-raxml.fasta --model GTR+G
 
 Analysis options:
   run mode: Alignment validation
   start tree(s): 
-  random seed: 1679602398
+  random seed: 1680031306
   SIMD kernels: SSE3
   parallelization: coarse-grained (auto), PTHREADS (auto)
 

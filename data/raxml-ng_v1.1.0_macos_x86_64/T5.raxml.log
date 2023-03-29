@@ -7,7 +7,7 @@ Questions/problems/suggestions? Please visit: https://groups.google.com/forum/#!
 
 System: Apple M1, 8 cores, 8 GB RAM
 
-RAxML-NG was called at 23-Mar-2023 15:11:56 as follows:
+RAxML-NG was called at 28-Mar-2023 14:22:51 as follows:
 
 ./raxml-ng --msa pestis-pMT1-all-mafft-raxml.fasta.raxml.reduced.phy --model GTR+G --prefix T5 --threads 2 --seed 2
 
@@ -238,7 +238,7 @@ Optimized model saved to: /Users/rajvipatel/phylogenetics-final/data/raxml-ng_v1
 
 Execution log saved to: /Users/rajvipatel/phylogenetics-final/data/raxml-ng_v1.1.0_macos_x86_64/T5.raxml.log
 
-Analysis started: 23-Mar-2023 15:11:56 / finished: 23-Mar-2023 15:12:15
+Analysis started: 28-Mar-2023 14:22:51 / finished: 28-Mar-2023 14:23:09
 
-Elapsed time: 18.410 seconds
+Elapsed time: 18.415 seconds
 

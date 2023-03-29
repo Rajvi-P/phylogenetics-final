@@ -7,14 +7,14 @@ Questions/problems/suggestions? Please visit: https://groups.google.com/forum/#!
 
 System: Apple M1, 8 cores, 8 GB RAM
 
-RAxML-NG was called at 23-Mar-2023 15:11:02 as follows:
+RAxML-NG was called at 28-Mar-2023 14:22:38 as follows:
 
 ./raxml-ng --parse --msa pestis-pMT1-all-mafft-raxml.fasta.raxml.reduced.phy --model GTR+G
 
 Analysis options:
   run mode: Alignment parsing and compression
   start tree(s): 
-  random seed: 1679602262
+  random seed: 1680031358
   tip-inner: OFF
   pattern compression: ON
   per-rate scalers: OFF
@@ -50,7 +50,7 @@ Alignment can be successfully read by RAxML-NG.
 
 Execution log saved to: /Users/rajvipatel/phylogenetics-final/data/raxml-ng_v1.1.0_macos_x86_64/pestis-pMT1-all-mafft-raxml.fasta.raxml.reduced.phy.raxml.log
 
-Analysis started: 23-Mar-2023 15:11:02 / finished: 23-Mar-2023 15:11:02
+Analysis started: 28-Mar-2023 14:22:38 / finished: 28-Mar-2023 14:22:38
 
-Elapsed time: 0.071 seconds
+Elapsed time: 0.072 seconds
 
