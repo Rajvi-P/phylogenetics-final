@@ -111,7 +111,7 @@ long, which matches the average sequence of the pMT1 genome. Chose only complete
 
 * Limitations: struggles to align distantly related sequences, takes very long to align big number of sequences
 
---Code:--
+_Code:_
 ```
 clustalw2 -ALIGN -INFILE=pestis-pMT1-all.fasta -OUTFILE=pestis-pMT1-all-clustalw.fasta -OUTPUT=FASTA
 ```
