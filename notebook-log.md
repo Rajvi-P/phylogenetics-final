@@ -1,5 +1,5 @@
 
-**Background:**
+## Subsection Heading Background:
 
 Yersinia pestis is infamous for causing plague, such as the Bubonic plague and the Justinian plague, killing millions.
 
@@ -16,6 +16,7 @@ Searches of the strains on Joint Genome Institute produced scientific study cita
 Confirmed by accession number, using NCBI assembly to match RefSeq and Genbank numbers. Strains found to be having unknown origins or made in a lab or were removed.
 
 
+**Raw Sequence Information**
 Yersinia pestis Antiqua plasmid pMT, complete sequence
 GenBank: CP000309.1
 Info: Isolated from a human infection in Africa (Republic of Congo in 1965) (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1482938/, https://img.jgi.doe.gov/cgi-bin/m/main.cgi?section=TaxonDetail&page=taxonDetail&taxon_oid=637000350)
@@ -82,25 +83,27 @@ Info: Isolated from host in former Soviet Union (https://link.springer.com/chapt
 https://www.ncbi.nlm.nih.gov/nuccore/CP009714.1?report=fasta
 
 --------------------------------------------------------------------------------------------------------------------------------------------
-**Goal:**
+## Subsection Heading Goal:
 Understand evolutionary history of Yersinia pestis based on pMT plasmid evolution
 --------------------------------------------------------------------------------------------------------------------------------------------
-**Step 1: Collect data**
+## Subsection Heading Step 1: Collect data
 
-Completed - Data received from NCBI's GenBank and stored separately in the raw-data folder. Data chosen based on being around 100,000 nucleotides
+**Completed - Collecting data**
+- Data received from NCBI's GenBank and stored separately in the raw-data folder. Data chosen based on being around 100,000 nucleotides
 long, which matches the average sequence of the pMT1 genome. Chose only complete sequences of pMT1.
 
 
 
-**Step 2: Quality control**
+## Subsection Heading Step 2: Quality control
 
-Completed - data received in FASTA form so already completed by NCBI
+**Completed - Quality control the data**
+- data received in FASTA form so already completed by NCBI
 
 
 
-**Step 3: Alignment**
+## Subsection Heading Step 3: Alignment
 
-## Subsection Heading Completed - using ClustalW
+**Completed - using ClustalW**
 
 Description: ClustalW is a software used for multiple sequence alignment of nucleotides.
 
@@ -113,7 +116,7 @@ Limitations: struggles to align distantly related sequences, takes very long to 
 Code:     clustalw2 -ALIGN -INFILE=pestis-pMT1-all.fasta -OUTFILE=pestis-pMT1-all-clustalw.fasta -OUTPUT=FASTA
 
 
-## Subsection Heading Completed-using Mafft
+**Completed - using Mafft**
 
 Description: Mafft is a multiple sequence alignment tool that progressively aligns large sequences quickly
 
@@ -128,14 +131,15 @@ Limitations: has no function to exclude divergent input sequences (https://www.n
 Code:     mafft pestis-pMT1-all.fasta > pestis-pMT1-all-mafft.fasta
 
 
-**Step 4: TrimAl**
+## Subsection Heading Step 4: TrimAl
+
+**Completed - using Trimal**
 
 Description: 
 
 Assumptions:
 
 Limitations:
-
 
 Code:
 
@@ -144,18 +148,9 @@ trimal -in pestis-pMT1-all-mafft.fasta -out pestis-pMT1-all-mafft-trimal.fasta
 trimal -in pestis-pMT1-all-clustalw.fasta -out pestis-pMT1-all-clustalw-trimal.fasta
 
 
+## Subsection Heading Step 5: Distance-based tree and parsimony-based tree using the ape and phangorn R packages
 
-
-
-
-
-
-
-
-
-**Step 5: Distance-based tree and parsimony-based tree using the ape and phangorn R packages**
-
-Completed- Parsimony Tree per each Clustalw and Mafft Alignment with selecting NZ_LBFJ01000024.1 as root.
+**Completed- Parsimony Tree per each Clustalw and Mafft Alignment with selecting NZ_LBFJ01000024.1 as root**
 
 Description: The ape and phangorn R packages will create distance-based trees and parsimony-based trees.
 
@@ -229,8 +224,7 @@ plot(tre2, cex = 0.6)
 title("pMT clustalw-aligned parsimony-based tree")
 
 
-
-Completed- Distance Tree per each Clustalw and Mafft Alignment with selecting NZ_LBFJ01000024.1 as root.
+**Completed- Distance Tree per each Clustalw and Mafft Alignment with selecting NZ_LBFJ01000024.1 as root**
 
 Description: The ape and phangorn R packages will create distance-based trees and parsimony-based trees.
 
@@ -297,9 +291,9 @@ title("pMT clustalw-aligned distance-based tree")
 
 
 
-**Step 6: Maximum Likelihood Inference Method Per each Parsimony and Distance Tree**
+## Subsection Heading Step 6: Maximum Likelihood Inference Method Per each Parsimony and Distance Tree
 
-Complete- using RAxML-NG 
+**Completed- using RAxML-NG to make maximum likelihood trees**
 
 Description: RAxML-NG is a maximum likelihood tool that infers phylogenetic trees using any of the following input
 
@@ -376,7 +370,7 @@ plot(tre2, cex = 0.6)
 title("pMT clustalw-aligned raxml maximum likelihood-based tree")
 
 
-Complete- using IQ-Tree 2
+**Completed- using IQ-Tree 2 to make maximum likelihood trees**
 
 Description: IQ-Tree 2 is a program that creates maximum likelihood phylogenies. The three main steps include using a 
 
