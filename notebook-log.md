@@ -144,6 +144,7 @@ trimal -in pestis-pMT1-all-mafft.fasta -out pestis-pMT1-all-mafft-trimal.fasta
 trimal -in pestis-pMT1-all-clustalw.fasta -out pestis-pMT1-all-clustalw-trimal.fasta
 
 
+
 Step 5: Distance-based tree and parsimony-based tree using the ape and phangorn R packages
 
 Completed- Parsimony Tree per each Clustalw and Mafft Alignment with selecting NZ_LBFJ01000024.1 as root.
@@ -221,7 +222,6 @@ title("pMT clustalw-aligned parsimony-based tree")
 
 
 
-
 Completed- Distance Tree per each Clustalw and Mafft Alignment with selecting NZ_LBFJ01000024.1 as root.
 
 Description: The ape and phangorn R packages will create distance-based trees and parsimony-based trees.
@@ -288,6 +288,18 @@ plot(tre, cex=.6)
 title("pMT clustalw-aligned distance-based tree")
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 Step 6: Maximum Likelihood Inference Method Per each Parsimony and Distance Tree
 
 Incomplete- using RAxML-NG 
@@ -313,21 +325,58 @@ Example:
 
 using mafft file: 
 
-Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --check --msa pestis-pMT1-all-mafft-raxml.fasta --model GTR+G
+Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --check --msa pestis-pMT1-all-mafft-trimal-raxml.fasta --model GTR+G
 
-Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --check --msa pestis-pMT1-all-mafft-raxml.fasta.raxml.reduced.phy --model GTR+G
+Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --check --msa pestis-pMT1-all-mafft-trimal-raxml.fasta.raxml.reduced.phy --model GTR+G
 
-Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --parse --msa pestis-pMT1-all-mafft-raxml.fasta.raxml.reduced.phy --model GTR+G
+Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --parse --msa pestis-pMT1-all-mafft-trimal-raxml.fasta.raxml.reduced.phy --model GTR+G
 
-Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --msa pestis-pMT1-all-mafft-raxml.fasta.raxml.reduced.phy --model GTR+G --prefix T5 --threads 2 --seed 2
+Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --msa pestis-pMT1-all-mafft-trimal-raxml.fasta.raxml.reduced.phy --model GTR+G --prefix T5 --threads 2 --search autoMRE=0.01
+
+library(ape)
+
+library(adegenet)
+
+library(phangorn)
+
+mytree <- read.tree(text='')
+
+plot(mytree)
+
+nodelabels()
+
+tre2 = root(mytree,outgroup="CP000309.1")
+
+plot(tre2, cex = 0.6)
+title("pMT mafft-aligned raxml maximum likelihood-based tree")
 
 using clustalw file: 
 
-Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --check --msa pestis-pMT1-all-clustalw-raxml.fasta --model GTR+G
+Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --check --msa pestis-pMT1-all-clustalw-trimal-raxml.fasta --model GTR+G
 
-Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --parse --msa pestis-pMT1-all-clustalw-raxml.fasta --model GTR+G
+Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --check --msa pestis-pMT1-all-clustalw-trimal-raxml.fasta.raxml.reduced.phy --model GTR+G
 
-Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --msa pestis-pMT1-all-clustalw-raxml.fasta --model GTR+G --prefix T6 --threads 2 --seed 2
+Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --parse --msa pestis-pMT1-all-clustalw-trimal-raxml.fasta.raxml.reduced.phy --model GTR+G
+
+Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --msa pestis-pMT1-all-clustalw-trimal-raxml.fasta --model GTR+G --prefix T6 --threads 2 --seed 10
+without seed so it runs until likelihood score between 2 iterations is less than 1% of current likelihood score: ./raxml-ng --msa pestis-pMT1-all-clustalw-trimal-raxml.fasta.raxml.reduced.phy --model GTR+G --prefix T6 --threads 2 --search autoMRE=0.01
+
+library(ape)
+
+library(adegenet)
+
+library(phangorn)
+
+mytree <- read.tree(text='')
+
+plot(mytree)
+
+nodelabels()
+
+tre2 = root(mytree,outgroup="CP000309.1")
+
+plot(tre2, cex = 0.6)
+title("pMT clustalw-aligned raxml maximum likelihood-based tree")
 
 
 Incomplete- using IQ-Tree 2
@@ -344,8 +393,43 @@ code:
 
 using mafft file:
 
-Rajvis-MacBook-Air:iqtree-2.2.0-MacOSX rajvipatel$ bin/iqtree2 -s pestis-pMT1-all-mafft-iqtree.fasta
+Rajvis-MacBook-Air:iqtree-2.2.0-MacOSX rajvipatel$ bin/iqtree2 -s pestis-pMT1-all-mafft-trimal-iqtree.fasta
+
+library(ape)
+
+library(adegenet)
+
+library(phangorn)
+
+mytree <- read.tree(text='(CP000309.1:0.0000541585,((CP000306.1:0.0000676246,(((AE017045.1:0.0001346761,NC_017266.1:0.0001681082):0.0030345631,(NC_003134.1:0.0000547773,CP045159.1:0.0001426097):0.0145850616):0.1952032729,NC_017155.1:0.0000670555):0.0000121843):0.0000172803,NC_014022.1:0.0000003798):0.0000003798,(((NZ_CP016275.1:0.0000007861,NC_009596.1:0.0000003798):0.0000008566,NZ_CP045637.1:0.0066396013):0.3234548284,(CP010248.1:0.0000429104,CP009714.1:0.0000296895):0.0001242404):0.0001075467);')
+
+plot(mytree)
+
+nodelabels()
+
+tre2 = root(mytree,outgroup="CP000309.1")
+
+plot(tre2, cex = 0.6)
+title("pMT mafft-aligned iqtree maximum likelihood-based tree")
+
 
 using clustalw file:
 
-Rajvis-MacBook-Air:iqtree-2.2.0-MacOSX rajvipatel$ bin/iqtree2 -s pestis-pMT1-all-clustalw-iqtree.fasta
+Rajvis-MacBook-Air:iqtree-2.2.0-MacOSX rajvipatel$ bin/iqtree2 -s pestis-pMT1-all-clustalw-trimal-iqtree.fasta
+
+library(ape)
+
+library(adegenet)
+
+library(phangorn)
+
+mytree <- read.tree(text='(AE017045.1:0.0001455069,NC_017266.1:0.0001286336,((NC_003134.1:0.0004308973,CP045159.1:0.0005177772):1.2539311755,((((CP000309.1:0.0000669229,NC_014022.1:0.0000004754):0.0000010413,(CP000306.1:0.0000830916,NC_017155.1:0.0000933742):0.0000128895):0.0312880351,((NZ_CP016275.1:0.0000009620,NC_009596.1:0.0000004754):0.0000009591,NZ_CP045637.1:0.0189830752):6.4242885658):0.2307907686,(CP010248.1:0.0000203969,CP009714.1:0.0000452803):0.2998268146):0.2222226247):0.0292935461);')
+
+plot(mytree)
+
+nodelabels()
+
+tre2 = root(mytree,outgroup="CP000309.1")
+
+plot(tre2, cex = 0.6)
+title("pMT clustalw-aligned iqtree maximum likelihood-based tree")

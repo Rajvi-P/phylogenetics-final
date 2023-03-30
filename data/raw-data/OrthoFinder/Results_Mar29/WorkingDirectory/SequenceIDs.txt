@@ -1,0 +1,13 @@
+0_0: CP000309.1 Yersinia pestis Antiqua plasmid pMT, complete sequence
+1_0: CP045159.1 Yersinia pestis subsp. pestis bv. Medievalis strain
+2_0: AE017045.1 Yersinia pestis biovar Microtus str. 91001 plasmid pMT1,
+3_0: NC_017266.1 Yersinia pestis biovar Medievalis str. Harbin 35 plasmid pMT,
+4_0: NC_009596.1 Yersinia pestis CA88-4125 plasmid pMT1, complete sequence
+5_0: NC_003134.1 Yersinia pestis CO92 plasmid pMT1, complete sequence
+6_0: NZ_CP016275.1 Yersinia pestis strain Cadman plasmid pMT1, complete
+7_0: NC_017155.1 Yersinia pestis D106004 plasmid pMT1, complete sequence
+8_0: CP000306.1 Yersinia pestis Nepal516 plasmid pMT, complete sequence
+9_0: CP009714.1 Yersinia pestis Pestoides F plasmid pMT, complete sequence
+10_0: CP010248.1 Yersinia pestis Pestoides G plasmid pMT sequence
+11_0: NZ_CP045637.1 Yersinia pestis strain S19960127 plasmid pMT1, complete
+12_0: NC_014022.1 Yersinia pestis Z176003 plasmid pMT1, complete sequence
