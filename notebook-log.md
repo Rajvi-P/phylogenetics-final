@@ -105,11 +105,11 @@ long, which matches the average sequence of the pMT1 genome. Chose only complete
 
 **Completed - using ClustalW**
 
-* Description: ClustalW is a software used for multiple sequence alignment of nucleotides. It is the most user friendly and performs quality alignments using progressive alignment methods.
+- Description: ClustalW is a software used for multiple sequence alignment of nucleotides. It is the most user friendly and performs quality alignments using progressive alignment methods.
 
-* Assumptions: all aligned sequences are evolutionarily related, rate of change in sequences is constant
+- Assumptions: all aligned sequences are evolutionarily related, rate of change in sequences is constant
 
-* Limitations: struggles to align distantly related sequences, takes very long to align big number of sequences
+- Limitations: struggles to align distantly related sequences, takes very long to align big number of sequences
 
 _Code:_
 ```
@@ -119,17 +119,13 @@ clustalw2 -ALIGN -INFILE=pestis-pMT1-all.fasta -OUTFILE=pestis-pMT1-all-clustalw
 
 **Completed - using Mafft**
 
-Description: Mafft is a multiple sequence alignment tool that progressively aligns large sequences quickly
+- Description: Mafft is a multiple sequence alignment tool that progressively aligns large sequences quickly and is macos friendly.
 
-and is macos friendly.
+- Assumptions: input sequences are homologous (from a common ancestor) (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3603318/), all lineages have the same evolutionary rate (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4920119/)
 
-Assumptions: input sequences are homologous (from a common ancestor) (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3603318/),
+- Limitations: has no function to exclude divergent input sequences (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4920119/)
 
-all lineages have the same evolutionary rate (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4920119/)
-
-Limitations: has no function to exclude divergent input sequences (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4920119/)
-
-Code:
+_Code:_
 ```
 mafft pestis-pMT1-all.fasta > pestis-pMT1-all-mafft.fasta
 ```
@@ -138,14 +134,13 @@ mafft pestis-pMT1-all.fasta > pestis-pMT1-all-mafft.fasta
 
 **Completed - using Trimal**
 
-Description: 
+- Description: 
 
-Assumptions:
+- Assumptions:
 
-Limitations:
+- Limitations:
 
-Code:
-
+_Code:_
 ```
 #mafft-aligned Trimal trimming
 trimal -in pestis-pMT1-all-mafft.fasta -out pestis-pMT1-all-mafft-trimal.fasta
@@ -161,20 +156,15 @@ trimal -in pestis-pMT1-all-clustalw.fasta -out pestis-pMT1-all-clustalw-trimal.f
 
 **Completed- Parsimony Tree per each Clustalw/Trimal and Mafft/Trimal Alignment with selecting CP000309.1 as root**
 
-Description: The ape and phangorn R packages will create distance-based trees and parsimony-based trees.
+- Description: The ape and phangorn R packages will create distance-based trees and parsimony-based trees. Parsimony-based methods will create a tree that minimizes the amount of evolutionary change required to explain the data.
 
-Parsimony-based methods will create a tree that minimizes the amount of evolutionary change required to explain the data.
+- Assumptions:  Parsimony methods assume independence among characters. 
 
-Assumptions:  Parsimony methods assume independence among characters. 
+- Limitations: Parsimony-based may not produce an accurate tree due to assuming the simplest explanation of evolutionary change is correct; trees may be inconsistent.
 
-Limitations: Parsimony-based may not produce an accurate tree due to assuming the simplest explanation of evolutionary change is
+- Note of how to root trees: root all trees using root(tre.ini,outgroup=“name of clade plasmids”) or root(tre.ini, node=number)
 
-correct; trees may be inconsistent.
-
-Note: root all trees using root(tre.ini,outgroup=“name of clade plasmids”) or root(tre.ini, node=number)
-
-Code:
-
+_Code:_
 ```
 #mafft-aligned parsimony tree:
 
@@ -236,17 +226,15 @@ title("pMT clustalw-aligned parsimony-based tree")
 
 **Completed- Distance Tree per each Clustalw/Trimal and Mafft/Trimal Alignment with selecting CP000309.1 as root**
 
-Description: The ape and phangorn R packages will create distance-based trees and parsimony-based trees.
+- Description: The ape and phangorn R packages will create distance-based trees and parsimony-based trees. Distance-based methods will create a tree by calculating pairwise distances between molecular sequences. 
 
-Distance-based methods will create a tree by calculating pairwise distances between molecular sequences. 
+- Assumptions:  Distance methods assume rate of molecular evolution is constant over time and across lineages.
 
-Assumptions:  Distance methods assume rate of molecular evolution is constant over time and across lineages.
+- Limitations: Distance-based relies on an existing model and which model is chosen; there is no flexibility.
 
-Limitations: Distance-based relies on an existing model and which model is chosen; there is no flexibility.
+- Note of how to root trees: root all trees using root(tre.ini,outgroup=“name of clade plasmids”) or root(tre.ini, node=number)
 
-Note: root all trees using root(tre.ini,outgroup=“name of clade plasmids”) or root(tre.ini, node=number)
-
-Code:
+_Code:_
 ```
 #mafft-aligned distance tree:
 
@@ -305,17 +293,13 @@ title("pMT clustalw-aligned distance-based tree")
 
 **Completed- RAxML-NG Maximum Likelihood Tree per each Clustalw/Trimal and Mafft/Trimal Alignment with selecting CP000309.1 as root**
 
-Description: RAxML-NG is a maximum likelihood tool that infers phylogenetic trees using any of the following input
+- Description: RAxML-NG is a maximum likelihood tool that infers phylogenetic trees using any of the following input sequence options: nucleotides, amino acids, binary/multi-state morphological data, RNA secondary structure.
 
-seequence options: nucleotides, amino acids, binary/multi-state morphological data, RNA secondary structure.
+- Assumptions: Mutation process is the same at every branch of the tree. All sites evolve independently of each other.  All sites evolve the same.
 
-Assumptions: Mutation process is the same at every branch of the tree. All sites evolve independently of each other. 
+- Limitations: Has higher variance of trees
 
-All sites evolve the same.
-
-Limitations: Has higher variance of trees
-
-Code:
+_Code:_
 ```
 #Example:
 
@@ -384,15 +368,13 @@ title("pMT clustalw-aligned raxml maximum likelihood-based tree")
 
 **Completed- IQ-Tree 2 Maximum Likelihood Tree per each Clustalw/Trimal and Mafft/Trimal Alignment with selecting CP000309.1 as root**
 
-Description: IQ-Tree 2 is a program that creates maximum likelihood phylogenies. The three main steps include using a 
+- Description: IQ-Tree 2 is a program that creates maximum likelihood phylogenies. The three main steps include using a  fast model selection via ModelFinder, an effective tree search algorithm, and an ultrafast bootstrap approximation.
 
-fast model selection via ModelFinder, an effective tree search algorithm, and an ultrafast bootstrap approximation.
+- Assumptions: samples local optima so top optima is the ideal tree, 
 
-Assumptions: samples local optima so top optima is the ideal tree, 
+- Limitations: longer running time, 100 maximum perturbations, no guarantee that output phylogeny represents global optimum
 
-Limitations: longer running time, 100 maximum perturbations, no guarantee that output phylogeny represents global optimum
-
-code:
+_Code:_
 ```
 #mafft-aligned iqtree2 tree: 
 
