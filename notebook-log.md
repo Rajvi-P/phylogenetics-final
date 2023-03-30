@@ -1,5 +1,5 @@
 
-## Subsection Heading Background:
+## Background:
 
 Yersinia pestis is infamous for causing plague, such as the Bubonic plague and the Justinian plague, killing millions.
 
@@ -83,10 +83,10 @@ Info: Isolated from host in former Soviet Union (https://link.springer.com/chapt
 https://www.ncbi.nlm.nih.gov/nuccore/CP009714.1?report=fasta
 
 --------------------------------------------------------------------------------------------------------------------------------------------
-## Subsection Heading Goal:
+## Goal:
 Understand evolutionary history of Yersinia pestis based on pMT plasmid evolution
 --------------------------------------------------------------------------------------------------------------------------------------------
-## Subsection Heading Step 1: Collect data
+## Step 1: Collect data
 
 **Completed - Collecting data**
 - Data received from NCBI's GenBank and stored separately in the raw-data folder. Data chosen based on being around 100,000 nucleotides
@@ -94,14 +94,14 @@ long, which matches the average sequence of the pMT1 genome. Chose only complete
 
 
 
-## Subsection Heading Step 2: Quality control
+## Step 2: Quality control
 
 **Completed - Quality control the data**
 - data received in FASTA form so already completed by NCBI
 
 
 
-## Subsection Heading Step 3: Alignment
+## Step 3: Alignment
 
 **Completed - using ClustalW**
 
@@ -113,7 +113,12 @@ Assumptions: all aligned sequences are evolutionarily related, rate of change in
 
 Limitations: struggles to align distantly related sequences, takes very long to align big number of sequences
 
-Code:     clustalw2 -ALIGN -INFILE=pestis-pMT1-all.fasta -OUTFILE=pestis-pMT1-all-clustalw.fasta -OUTPUT=FASTA
+---
+Code:
+
+```
+clustalw2 -ALIGN -INFILE=pestis-pMT1-all.fasta -OUTFILE=pestis-pMT1-all-clustalw.fasta -OUTPUT=FASTA
+```
 
 
 **Completed - using Mafft**
@@ -131,7 +136,7 @@ Limitations: has no function to exclude divergent input sequences (https://www.n
 Code:     mafft pestis-pMT1-all.fasta > pestis-pMT1-all-mafft.fasta
 
 
-## Subsection Heading Step 4: TrimAl
+## Step 4: TrimAl
 
 **Completed - using Trimal**
 
@@ -148,7 +153,7 @@ trimal -in pestis-pMT1-all-mafft.fasta -out pestis-pMT1-all-mafft-trimal.fasta
 trimal -in pestis-pMT1-all-clustalw.fasta -out pestis-pMT1-all-clustalw-trimal.fasta
 
 
-## Subsection Heading Step 5: Distance-based tree and parsimony-based tree using the ape and phangorn R packages
+## Step 5: Distance-based tree and parsimony-based tree using the ape and phangorn R packages
 
 **Completed- Parsimony Tree per each Clustalw and Mafft Alignment with selecting NZ_LBFJ01000024.1 as root**
 
@@ -291,7 +296,7 @@ title("pMT clustalw-aligned distance-based tree")
 
 
 
-## Subsection Heading Step 6: Maximum Likelihood Inference Method Per each Parsimony and Distance Tree
+## Step 6: Maximum Likelihood Inference Method Per each Parsimony and Distance Tree
 
 **Completed- using RAxML-NG to make maximum likelihood trees**
 
