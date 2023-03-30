@@ -92,13 +92,13 @@ long, which matches the average sequence of the pMT1 genome. Chose only complete
 
 
 
-Step 2: Quality control
+**Step 2: Quality control**
 
 Completed - data received in FASTA form so already completed by NCBI
 
 
 
-Step 3: Alignment
+**Step 3: Alignment**
 
 Completed - using ClustalW
 
