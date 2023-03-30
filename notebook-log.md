@@ -105,13 +105,13 @@ long, which matches the average sequence of the pMT1 genome. Chose only complete
 
 **Completed - using ClustalW**
 
-___Description:___ ClustalW is a software used for multiple sequence alignment of nucleotides.
+<u>Description:<u> ClustalW is a software used for multiple sequence alignment of nucleotides.
 
 It is the most user friendly and performs quality alignments using progressive alignment methods.
 
-___Assumptions:___ all aligned sequences are evolutionarily related, rate of change in sequences is constant
+Assumptions: all aligned sequences are evolutionarily related, rate of change in sequences is constant
 
-___Limitations:___ struggles to align distantly related sequences, takes very long to align big number of sequences
+Limitations: struggles to align distantly related sequences, takes very long to align big number of sequences
 
 Code:
 ```
@@ -149,11 +149,11 @@ Limitations:
 Code:
 
 ```
-#on mafft-aligned sequences
+#mafft-aligned Trimal trimming
 trimal -in pestis-pMT1-all-mafft.fasta -out pestis-pMT1-all-mafft-trimal.fasta
 ```
 ```
-#on clustalw-aligned sequences
+#clustalw-aligned Trimal trimming
 trimal -in pestis-pMT1-all-clustalw.fasta -out pestis-pMT1-all-clustalw-trimal.fasta
 ```
 
@@ -161,7 +161,7 @@ trimal -in pestis-pMT1-all-clustalw.fasta -out pestis-pMT1-all-clustalw-trimal.f
 
 ## Step 5: Distance-based tree and parsimony-based tree using the ape and phangorn R packages
 
-**Completed- Parsimony Tree per each Clustalw and Mafft Alignment with selecting NZ_LBFJ01000024.1 as root**
+**Completed- Parsimony Tree per each Clustalw/Trimal and Mafft/Trimal Alignment with selecting CP000309.1 as root**
 
 Description: The ape and phangorn R packages will create distance-based trees and parsimony-based trees.
 
@@ -178,7 +178,7 @@ Note: root all trees using root(tre.ini,outgroup=“name of clade plasmids”) o
 Code:
 
 ```
-#Mafft-aligned parsimony tree:
+#mafft-aligned parsimony tree:
 
 library(ape)
 
@@ -207,7 +207,7 @@ plot(tre2, cex = 0.6)
 title("pMT mafft-aligned parsimony-based tree")
 ```
 ```
-#Clustalw-aligned parsimony tree:
+#clustalw-aligned parsimony tree:
 
 library(ape)
 
@@ -236,7 +236,7 @@ plot(tre2, cex = 0.6)
 title("pMT clustalw-aligned parsimony-based tree")
 ```
 
-**Completed- Distance Tree per each Clustalw and Mafft Alignment with selecting NZ_LBFJ01000024.1 as root**
+**Completed- Distance Tree per each Clustalw/Trimal and Mafft/Trimal Alignment with selecting CP000309.1 as root**
 
 Description: The ape and phangorn R packages will create distance-based trees and parsimony-based trees.
 
@@ -250,7 +250,7 @@ Note: root all trees using root(tre.ini,outgroup=“name of clade plasmids”) o
 
 Code:
 ```
-#Mafft-aligned distance tree:
+#mafft-aligned distance tree:
 
 library(ape)
 
@@ -276,7 +276,7 @@ plot(tre, cex=.6)
 title("pMT mafft-aligned distance-based tree")
 ```
 ```
-#Clustalw-aligned distance tree:
+#clustalw-aligned distance tree:
 
 library(ape)
 
@@ -305,7 +305,7 @@ title("pMT clustalw-aligned distance-based tree")
 
 ## Step 6: Maximum Likelihood Inference Method Per each Parsimony and Distance Tree
 
-**Completed- using RAxML-NG to make maximum likelihood trees**
+**Completed- RAxML-NG Maximum Likelihood Tree per each Clustalw/Trimal and Mafft/Trimal Alignment with selecting CP000309.1 as root**
 
 Description: RAxML-NG is a maximum likelihood tool that infers phylogenetic trees using any of the following input
 
@@ -319,7 +319,7 @@ Limitations: Has higher variance of trees
 
 Code:
 ```
-Example:
+#Example:
 
 ./raxml-ng --check --msa ng-tutorial/bad.fa --model GTR+G
 ./raxml-ng --check --msa ng-tutorial/bad.fa.raxml.reduced.phy --model GTR+G
@@ -327,7 +327,7 @@ Example:
 ./raxml-ng --msa ng-tutorial/prim.phy --model GTR+G --prefix T3 --threads 2 --seed 2
 ```
 ```
-#using mafft file: 
+#mafft-aligned raxml-ng tree: 
 
 Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --check --msa pestis-pMT1-all-mafft-trimal-raxml.fasta --model GTR+G
 
@@ -355,7 +355,7 @@ plot(tre2, cex = 0.6)
 title("pMT mafft-aligned raxml maximum likelihood-based tree")
 ```
 ```
-#using clustalw file: 
+#clustalw-aligned raxml-ng tree:  
 
 Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --check --msa pestis-pMT1-all-clustalw-trimal-raxml.fasta --model GTR+G
 
@@ -384,7 +384,7 @@ plot(tre2, cex = 0.6)
 title("pMT clustalw-aligned raxml maximum likelihood-based tree")
 ```
 
-**Completed- using IQ-Tree 2 to make maximum likelihood trees**
+**Completed- IQ-Tree 2 Maximum Likelihood Tree per each Clustalw/Trimal and Mafft/Trimal Alignment with selecting CP000309.1 as root**
 
 Description: IQ-Tree 2 is a program that creates maximum likelihood phylogenies. The three main steps include using a 
 
@@ -396,7 +396,7 @@ Limitations: longer running time, 100 maximum perturbations, no guarantee that o
 
 code:
 ```
-#using mafft file:
+#mafft-aligned iqtree2 tree: 
 
 Rajvis-MacBook-Air:iqtree-2.2.0-MacOSX rajvipatel$ bin/iqtree2 -s pestis-pMT1-all-mafft-trimal-iqtree.fasta
 
@@ -418,7 +418,7 @@ plot(tre2, cex = 0.6)
 title("pMT mafft-aligned iqtree maximum likelihood-based tree")
 ```
 ```
-#using clustalw file:
+#clustalw-aligned iqtree2 tree: 
 
 Rajvis-MacBook-Air:iqtree-2.2.0-MacOSX rajvipatel$ bin/iqtree2 -s pestis-pMT1-all-clustalw-trimal-iqtree.fasta
 
