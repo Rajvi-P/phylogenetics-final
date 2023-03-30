@@ -115,7 +115,7 @@ Limitations: struggles to align distantly related sequences, takes very long to 
 
 ---
 Code:
-
+---
 ```
 clustalw2 -ALIGN -INFILE=pestis-pMT1-all.fasta -OUTFILE=pestis-pMT1-all-clustalw.fasta -OUTPUT=FASTA
 ```
