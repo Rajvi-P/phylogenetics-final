@@ -113,9 +113,7 @@ Assumptions: all aligned sequences are evolutionarily related, rate of change in
 
 Limitations: struggles to align distantly related sequences, takes very long to align big number of sequences
 
-===
 Code:
-===
 ```
 clustalw2 -ALIGN -INFILE=pestis-pMT1-all.fasta -OUTFILE=pestis-pMT1-all-clustalw.fasta -OUTPUT=FASTA
 ```
@@ -133,8 +131,10 @@ all lineages have the same evolutionary rate (https://www.ncbi.nlm.nih.gov/pmc/a
 
 Limitations: has no function to exclude divergent input sequences (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4920119/)
 
-Code:     mafft pestis-pMT1-all.fasta > pestis-pMT1-all-mafft.fasta
-
+Code:
+```
+mafft pestis-pMT1-all.fasta > pestis-pMT1-all-mafft.fasta
+```
 
 ## Step 4: TrimAl
 
@@ -148,9 +148,13 @@ Limitations:
 
 Code:
 
+```
 trimal -in pestis-pMT1-all-mafft.fasta -out pestis-pMT1-all-mafft-trimal.fasta
-
+```
+```
 trimal -in pestis-pMT1-all-clustalw.fasta -out pestis-pMT1-all-clustalw-trimal.fasta
+```
+
 
 
 ## Step 5: Distance-based tree and parsimony-based tree using the ape and phangorn R packages
@@ -171,7 +175,8 @@ Note: root all trees using root(tre.ini,outgroup=“name of clade plasmids”) o
 
 Code:
 
-Mafft-aligned parsimony tree:
+```
+#Mafft-aligned parsimony tree:
 
 library(ape)
 
@@ -198,9 +203,9 @@ tre2 = tre2 <- root(tre.ini, outgroup = "CP000309.1 263294 bp")
 plot(tre2, cex = 0.6)
 
 title("pMT mafft-aligned parsimony-based tree")
-
-
-Clustalw-aligned parsimony tree:
+```
+```
+#Clustalw-aligned parsimony tree:
 
 library(ape)
 
@@ -227,7 +232,7 @@ tre2 = root(tre.ini,outgroup="CP000309.1 210104 bp")
 plot(tre2, cex = 0.6)
 
 title("pMT clustalw-aligned parsimony-based tree")
-
+```
 
 **Completed- Distance Tree per each Clustalw and Mafft Alignment with selecting NZ_LBFJ01000024.1 as root**
 
@@ -242,8 +247,8 @@ Limitations: Distance-based relies on an existing model and which model is chose
 Note: root all trees using root(tre.ini,outgroup=“name of clade plasmids”) or root(tre.ini, node=number)
 
 Code:
-
-Mafft-aligned distance tree:
+```
+#Mafft-aligned distance tree:
 
 library(ape)
 
@@ -267,9 +272,9 @@ tre <- ladderize(tre)
 
 plot(tre, cex=.6)
 title("pMT mafft-aligned distance-based tree")
-
-
-Clustalw-aligned distance tree:
+```
+```
+#Clustalw-aligned distance tree:
 
 library(ape)
 
@@ -293,7 +298,7 @@ tre <- ladderize(tre)
 
 plot(tre, cex=.6)
 title("pMT clustalw-aligned distance-based tree")
-
+```
 
 
 ## Step 6: Maximum Likelihood Inference Method Per each Parsimony and Distance Tree
@@ -311,15 +316,16 @@ All sites evolve the same.
 Limitations: Has higher variance of trees
 
 Code:
-
+```
 Example:
 
 ./raxml-ng --check --msa ng-tutorial/bad.fa --model GTR+G
 ./raxml-ng --check --msa ng-tutorial/bad.fa.raxml.reduced.phy --model GTR+G
 ./raxml-ng --parse --msa ng-tutorial/prim.phy --model GTR+G
 ./raxml-ng --msa ng-tutorial/prim.phy --model GTR+G --prefix T3 --threads 2 --seed 2
-
-using mafft file: 
+```
+```
+#using mafft file: 
 
 Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --check --msa pestis-pMT1-all-mafft-trimal-raxml.fasta --model GTR+G
 
@@ -345,8 +351,9 @@ tre2 = root(mytree,outgroup="CP000309.1_263294_bp")
 
 plot(tre2, cex = 0.6)
 title("pMT mafft-aligned raxml maximum likelihood-based tree")
-
-using clustalw file: 
+```
+```
+#using clustalw file: 
 
 Rajvis-Air:raxml-ng_v1.1.0_macos_x86_64 rajvipatel$ ./raxml-ng --check --msa pestis-pMT1-all-clustalw-trimal-raxml.fasta --model GTR+G
 
@@ -373,7 +380,7 @@ tre2 = root(mytree,outgroup="CP000309.1_210104_bp")
 
 plot(tre2, cex = 0.6)
 title("pMT clustalw-aligned raxml maximum likelihood-based tree")
-
+```
 
 **Completed- using IQ-Tree 2 to make maximum likelihood trees**
 
@@ -386,8 +393,8 @@ Assumptions: samples local optima so top optima is the ideal tree,
 Limitations: longer running time, 100 maximum perturbations, no guarantee that output phylogeny represents global optimum
 
 code:
-
-using mafft file:
+```
+#using mafft file:
 
 Rajvis-MacBook-Air:iqtree-2.2.0-MacOSX rajvipatel$ bin/iqtree2 -s pestis-pMT1-all-mafft-trimal-iqtree.fasta
 
@@ -407,9 +414,9 @@ tre2 = root(mytree,outgroup="CP000309.1")
 
 plot(tre2, cex = 0.6)
 title("pMT mafft-aligned iqtree maximum likelihood-based tree")
-
-
-using clustalw file:
+```
+```
+#using clustalw file:
 
 Rajvis-MacBook-Air:iqtree-2.2.0-MacOSX rajvipatel$ bin/iqtree2 -s pestis-pMT1-all-clustalw-trimal-iqtree.fasta
 
@@ -429,3 +436,4 @@ tre2 = root(mytree,outgroup="CP000309.1")
 
 plot(tre2, cex = 0.6)
 title("pMT clustalw-aligned iqtree maximum likelihood-based tree")
+```
