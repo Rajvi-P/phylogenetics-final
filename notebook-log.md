@@ -113,9 +113,9 @@ Assumptions: all aligned sequences are evolutionarily related, rate of change in
 
 Limitations: struggles to align distantly related sequences, takes very long to align big number of sequences
 
----
+===
 Code:
----
+===
 ```
 clustalw2 -ALIGN -INFILE=pestis-pMT1-all.fasta -OUTFILE=pestis-pMT1-all-clustalw.fasta -OUTPUT=FASTA
 ```
