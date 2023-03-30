@@ -105,7 +105,7 @@ long, which matches the average sequence of the pMT1 genome. Chose only complete
 
 **Completed - using ClustalW**
 
-<u>Description:<u> ClustalW is a software used for multiple sequence alignment of nucleotides.
+<u>Description:</u> ClustalW is a software used for multiple sequence alignment of nucleotides.
 
 It is the most user friendly and performs quality alignments using progressive alignment methods.
 
