@@ -1,4 +1,4 @@
-
+--------------------------------------------------------------------------------------------------------------------------------------------
 ## Background:
 
 Yersinia pestis is infamous for causing plague, such as the Bubonic plague and the Justinian plague, killing millions.
@@ -84,7 +84,8 @@ https://www.ncbi.nlm.nih.gov/nuccore/CP009714.1?report=fasta
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 ## Goal:
-Understand evolutionary history of Yersinia pestis based on pMT plasmid evolution
+**Understand evolutionary history of Yersinia pestis based on pMT plasmid evolution**
+
 --------------------------------------------------------------------------------------------------------------------------------------------
 ## Step 1: Collect data
 
