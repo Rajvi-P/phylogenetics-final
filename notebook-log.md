@@ -100,7 +100,7 @@ Completed - data received in FASTA form so already completed by NCBI
 
 **Step 3: Alignment**
 
-Completed - using ClustalW
+## Subsection Heading Completed - using ClustalW
 
 Description: ClustalW is a software used for multiple sequence alignment of nucleotides.
 
@@ -113,7 +113,7 @@ Limitations: struggles to align distantly related sequences, takes very long to 
 Code:     clustalw2 -ALIGN -INFILE=pestis-pMT1-all.fasta -OUTFILE=pestis-pMT1-all-clustalw.fasta -OUTPUT=FASTA
 
 
-Completed-using Mafft
+## Subsection Heading Completed-using Mafft
 
 Description: Mafft is a multiple sequence alignment tool that progressively aligns large sequences quickly
 
