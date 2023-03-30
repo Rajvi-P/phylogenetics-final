@@ -1,5 +1,5 @@
 
-Background:
+**Background:**
 
 Yersinia pestis is infamous for causing plague, such as the Bubonic plague and the Justinian plague, killing millions.
 
@@ -82,10 +82,10 @@ Info: Isolated from host in former Soviet Union (https://link.springer.com/chapt
 https://www.ncbi.nlm.nih.gov/nuccore/CP009714.1?report=fasta
 
 --------------------------------------------------------------------------------------------------------------------------------------------
-Goal:
+**Goal:**
 Understand evolutionary history of Yersinia pestis based on pMT plasmid evolution
 --------------------------------------------------------------------------------------------------------------------------------------------
-Step 1: Collect data
+**Step 1: Collect data**
 
 Completed - Data received from NCBI's GenBank and stored separately in the raw-data folder. Data chosen based on being around 100,000 nucleotides
 long, which matches the average sequence of the pMT1 genome. Chose only complete sequences of pMT1.
@@ -128,7 +128,7 @@ Limitations: has no function to exclude divergent input sequences (https://www.n
 Code:     mafft pestis-pMT1-all.fasta > pestis-pMT1-all-mafft.fasta
 
 
-Step 4: TrimAl
+**Step 4: TrimAl**
 
 Description: 
 
@@ -145,7 +145,15 @@ trimal -in pestis-pMT1-all-clustalw.fasta -out pestis-pMT1-all-clustalw-trimal.f
 
 
 
-Step 5: Distance-based tree and parsimony-based tree using the ape and phangorn R packages
+
+
+
+
+
+
+
+
+**Step 5: Distance-based tree and parsimony-based tree using the ape and phangorn R packages**
 
 Completed- Parsimony Tree per each Clustalw and Mafft Alignment with selecting NZ_LBFJ01000024.1 as root.
 
@@ -289,20 +297,9 @@ title("pMT clustalw-aligned distance-based tree")
 
 
 
+**Step 6: Maximum Likelihood Inference Method Per each Parsimony and Distance Tree**
 
-
-
-
-
-
-
-
-
-
-
-Step 6: Maximum Likelihood Inference Method Per each Parsimony and Distance Tree
-
-Incomplete- using RAxML-NG 
+Complete- using RAxML-NG 
 
 Description: RAxML-NG is a maximum likelihood tool that infers phylogenetic trees using any of the following input
 
@@ -339,13 +336,13 @@ library(adegenet)
 
 library(phangorn)
 
-mytree <- read.tree(text='')
+mytree <- read.tree(text='((((CP010248.1_263294_bp:0.000043,CP009714.1_263294_bp:0.000030):0.000124,((((((AE017045.1_263294_bp:0.000135,NC_017266.1_263294_bp:0.000168):0.003031,(CP045159.1_263294_bp:0.000142,NC_003134.1_263294_bp:0.000055):0.014568):0.195463,NC_017155.1_263294_bp:0.000067):0.000012,CP000306.1_263294_bp:0.000068):0.000017,NC_014022.1_263294_bp:0.000001):0.000001,CP000309.1_263294_bp:0.000054):0.000107):0.324203,NZ_CP045637.1_263294_bp:0.006637):0.000001,NC_009596.1_263294_bp:0.000001,NZ_CP016275.1_263294_bp:0.000001);')
 
 plot(mytree)
 
 nodelabels()
 
-tre2 = root(mytree,outgroup="CP000309.1")
+tre2 = root(mytree,outgroup="CP000309.1_263294_bp")
 
 plot(tre2, cex = 0.6)
 title("pMT mafft-aligned raxml maximum likelihood-based tree")
@@ -367,19 +364,19 @@ library(adegenet)
 
 library(phangorn)
 
-mytree <- read.tree(text='')
+mytree <- read.tree(text='(((NC_009596.1_210104_bp:0.000001,NZ_CP016275.1_210104_bp:0.000001):0.000001,NZ_CP045637.1_210104_bp:0.018248):100.000000,(CP000306.1_210104_bp:0.000085,NC_017155.1_210104_bp:0.000095):0.000008,((((CP009714.1_210104_bp:0.000033,CP010248.1_210104_bp:0.000034):0.221188,(((CP045159.1_210104_bp:0.000399,NC_003134.1_210104_bp:0.000343):0.832370,NC_017266.1_210104_bp:0.000153):0.000001,AE017045.1_210104_bp:0.000126):0.198481):0.215744,CP000309.1_210104_bp:0.000067):0.000001,NC_014022.1_210104_bp:0.000001):0.000006);')
 
 plot(mytree)
 
 nodelabels()
 
-tre2 = root(mytree,outgroup="CP000309.1")
+tre2 = root(mytree,outgroup="CP000309.1_210104_bp")
 
 plot(tre2, cex = 0.6)
 title("pMT clustalw-aligned raxml maximum likelihood-based tree")
 
 
-Incomplete- using IQ-Tree 2
+Complete- using IQ-Tree 2
 
 Description: IQ-Tree 2 is a program that creates maximum likelihood phylogenies. The three main steps include using a 
 
