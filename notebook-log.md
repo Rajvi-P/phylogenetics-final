@@ -84,7 +84,7 @@ https://www.ncbi.nlm.nih.gov/nuccore/CP009714.1?report=fasta
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 ## Goal:
-**Understand evolutionary history of Yersinia pestis based on pMT plasmid evolution**
+**Understand the evolutionary history of Yersinia pestis based on pMT plasmid evolution**
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 ## Step 1: Collect data
@@ -419,4 +419,32 @@ tre2 = root(mytree,outgroup="CP000309.1")
 
 plot(tre2, cex = 0.6)
 title("pMT clustalw-aligned iqtree maximum likelihood-based tree")
+```
+
+## Step 7: Bayesian Method Per each Parsimony and Distance Tree
+
+**Completed- Mr.Bayes per each Clustalw/Trimal and Mafft/Trimal Alignment
+
+- Description:  
+
+- Assumptions: 
+
+- Limitations: 
+
+_Code:_
+
+```
+#mafft-aligned Mr.Bayes tree:
+
+cat pestis-pMT1-all-mafft-trimal.nex mbblock.txt > pestis-pMT1-all-mafft-trimal-mrbayes.nex
+
+pestis-pMT1-all-mafft-trimal-mrbayes.nex
+```
+
+```
+#clustalw-aligned Mr.Bayes tree:
+
+cat pestis-pMT1-all-clustalw-trimal.nex mbblock.txt > pestis-pMT1-all-clustalw-trimal-mrbayes.nex
+
+pestis-pMT1-all-clustalw-trimal-mrbayes.nex
 ```
