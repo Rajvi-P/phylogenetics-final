@@ -1,4 +1,0 @@
-2023-03-28 14:04:02 : Started OrthoFinder version 2.4.0
-Command Line: /Users/rajvipatel/opt/anaconda3/bin/orthofinder -f raw-data
-
-WorkingDirectory_Base: /Users/rajvipatel/phylogenetics-final/data/raw-data/OrthoFinder/Results_Mar28/WorkingDirectory/
